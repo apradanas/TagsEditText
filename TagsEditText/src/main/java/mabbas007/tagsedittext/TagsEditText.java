@@ -485,7 +485,7 @@ public class TagsEditText extends AutoCompleteTextView {
             for (int i = mTagSpans.size(); i < size; i++) {
                 Tag tag = mTags.get(i);
                 String source = tag.getSource();
-                if (tag.isSpan() && source.length() > 0) {
+                if (tag.isSpan()) {
                     TextView tv = createTextView(source);
                     Drawable bd = convertViewToDrawable(tv);
                     bd.setBounds(0, 0, bd.getIntrinsicWidth(), bd.getIntrinsicHeight());
@@ -510,7 +510,7 @@ public class TagsEditText extends AutoCompleteTextView {
 
     private void updateTags(String newString) {
         String source = getNewTag(newString);
-        if (!TextUtils.isEmpty(source) && !source.equals(NEW_LINE)) {
+        if (!TextUtils.isEmpty(source) && !source.equals(NEW_LINE) && !source.equalsIgnoreCase(mSeparator)) {
             boolean isSpan = source.endsWith(NEW_LINE) ||
                     (!mIsSpacesAllowedInTags && source.endsWith(mSeparator));
             if (isSpan) {
