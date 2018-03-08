@@ -485,7 +485,7 @@ public class TagsEditText extends AutoCompleteTextView {
             for (int i = mTagSpans.size(); i < size; i++) {
                 Tag tag = mTags.get(i);
                 String source = tag.getSource();
-                if (tag.isSpan()) {
+                if (tag.isSpan() && source.length() > 0) {
                     TextView tv = createTextView(source);
                     Drawable bd = convertViewToDrawable(tv);
                     bd.setBounds(0, 0, bd.getIntrinsicWidth(), bd.getIntrinsicHeight());
